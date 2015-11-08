@@ -1,0 +1,4 @@
+cd to precompiled-jsx 
+do http-server (download from npm )
+point browser to localhost:8080
+LULZ
