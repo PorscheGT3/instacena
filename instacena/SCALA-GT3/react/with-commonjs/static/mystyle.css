@@ -1,0 +1,29 @@
+.innerContainer{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+
+}
+
+.timesFields{
+    display: flex;
+    flex-direction: row;
+    align-self:center;
+}
+
+.test {
+    display: flex;
+    align-self:center;
+
+}
+
+.but{
+    display: flex;
+    align-self:center;   
+}
+
+.timeField{
+    display: flex;
+    margin-left: 20px;
+    margin-right:20px;
+}

@@ -2,6 +2,8 @@
 
 var React = require('react');
 var ReactDOM = require('react-dom');
+var RaisedButton = require('material-ui/lib/raised-button');
+var TextField = require('material-ui/lib/text-field');
 
 var Application = React.createClass({
 
@@ -43,22 +45,25 @@ var Application = React.createClass({
   render: function() {
 
     return (
-      <div>
-        URL: 
-        <input onChange={this.parse_url} type="text"/>
-        <br/>
-        Start time: 
-        <input onChange={this.parse_start_time} type="text"/>
-        <br/>
-        End Time 
-        <input onChange={this.parse_end_time} type="text"/>
-        <br/>
-        <br/>
-        Add something to output link
-        <input onChange={this.custom_part} type="text"/>
-        <br/>
-        <input onClick={this.submit_parameters} type="submit" />
+      <div className="innerContainer">
+        <TextField className='test'
+          hintText="Hint Text"
+          floatingLabelText="URL" onChange={this.parse_url}/>
+        <div className="timesFields">
+            <TextField className="timeField"
+              hintText="Hint Text"
+              floatingLabelText="Start Time" onChange={this.parse_start_time} />
+            <TextField className="timeField"
+              hintText="Hint Text"
+              floatingLabelText="End Time" onChange={this.parse_end_time} />
+        </div>
+        <TextField className="test"
+          hintText="Hint Text"
+          floatingLabelText="Add something to output link" onChange={this.custom_part}/>
 
+        <div className="but">
+          <RaisedButton label="Create Link" onClick={this.submit_parameters} />
+        </div>
         <a href={this.state.cena_url}> {this.state.cena_url} </a>
       </div>
 
