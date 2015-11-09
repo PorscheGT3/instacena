@@ -32,7 +32,8 @@ var Application = React.createClass({
   },
   submit_parameters: function submit_parameters() {
 
-    var fetch_url = '/get_link/' + this.state.url + '/' + this.state.start_time + '/' + this.state.end_time + '/' + this.state.custom_part;
+    var url = this.state.url.split('v=')[1];
+    var fetch_url = '/get_link/' + url + '/' + this.state.start_time + '/' + this.state.end_time + '/' + this.state.custom_part;
 
     fetch(fetch_url).then(function (response) {
       return response.text();
