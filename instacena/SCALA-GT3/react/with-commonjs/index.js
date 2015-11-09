@@ -4,6 +4,7 @@ var React = require('react');
 var ReactDOM = require('react-dom');
 var RaisedButton = require('material-ui/lib/raised-button');
 var TextField = require('material-ui/lib/text-field');
+var Dialog = require('material-ui/lib/dialog');
 
 var Application = React.createClass({
 
@@ -14,11 +15,9 @@ var Application = React.createClass({
             cena_url:null
             };
   },
-
   parse_url: function(event){
     this.setState({url: event.target.value})
   },
-
   parse_start_time: function(event){
     this.setState({start_time: event.target.value})
   },
@@ -40,21 +39,21 @@ var Application = React.createClass({
             var json_results = JSON.parse(body)
             this.setState({cena_url: json_results.cena_url
                 })
-            console.log( json_results.cena_url)
+            this.refs.dialog.show()
           }.bind(this));
   },
   render: function() {
 
     return (
       <div className="innerContainer">
-        <TextField className='test'
+        <TextField className='test' style={{width:'45%'}}
           hintText="Hint Text"
           floatingLabelText="URL" onChange={this.parse_url}/>
         <div className="timesFields">
-            <TextField className="timeField"
+            <TextField className="timeField" style={{width:'20%'}}
               hintText="Hint Text"
               floatingLabelText="Start Time" onChange={this.parse_start_time} />
-            <TextField className="timeField"
+            <TextField className="timeField" style={{width:'20%'}}
               hintText="Hint Text"
               floatingLabelText="End Time" onChange={this.parse_end_time} />
         </div>
@@ -65,7 +64,11 @@ var Application = React.createClass({
         <div className="but">
           <RaisedButton label="Create Link" onClick={this.submit_parameters} />
         </div>
-        <a href={this.state.cena_url}> {this.state.cena_url} </a>
+        <Dialog
+          ref='dialog'
+          actionFocus="submit">
+          {this.state.cena_url}
+        </Dialog>
       </div>
 
       )
